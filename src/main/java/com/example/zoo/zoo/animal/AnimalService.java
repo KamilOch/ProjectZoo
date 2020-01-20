@@ -15,7 +15,6 @@ public class AnimalService {
         this.animals = animals;
     }
 
-
     public List<Animal> createBaseAnimalsList() {
         animals.add(new Animal("Słoń", 30, "Ela"));
         animals.add(new Animal("Tygrys", 7, "Edek"));
@@ -23,4 +22,10 @@ public class AnimalService {
 
         return animals;
     }
+
+    public void addAnimal(Animal animal) {
+        animals.add(animal);
+    }
+
+
 }
