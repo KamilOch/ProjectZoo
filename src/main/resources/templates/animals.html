@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Animal list</title>
+</head>
+<body>
+
+<h1>Current animal list</h1>
+<br/>
+<form action="/animalsList" th:object="${animals}">
+
+
+    <table>
+        <thead>
+        <tr>
+            <th>Type</th>
+            <th>Age</th>
+            <th>Name</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="animal : ${animals}">
+            <td><span th:text="${animal.type}">type</span></td>
+            <td><span th:text="${animal.age}">age</span></td>
+            <td><span th:text="${animal.name}">name</span></td>
+        </tr>
+        </tbody>
+    </table>
+
+</form>
+
+
+</body>
+</html>
