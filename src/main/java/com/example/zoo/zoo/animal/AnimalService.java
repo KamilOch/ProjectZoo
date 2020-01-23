@@ -28,7 +28,6 @@ public class AnimalService {
         animals.add(animal);
     }
 
-
     public void deleteAnimalById(int id) {
         Animal deletedAnimal;
         for (Animal animal : animals
@@ -40,4 +39,9 @@ public class AnimalService {
             }
         }
     }
+    //todo
+    public void saveEditedAnimal(int id, Animal animal) {
+        animals.add(id, animal);
+    }
+
 }

@@ -5,9 +5,7 @@ import com.example.zoo.zoo.animal.AnimalService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -55,4 +53,14 @@ public class ProgramController {
         animalService.deleteAnimalById(Integer.parseInt(id));
         return "redirect:/animalsList";
     }
+    //TODO
+    @RequestMapping("/editAnimal")
+    public String editAnimal(
+            @ModelAttribute("animal") Animal animal,
+            Model model
+    ) {
+        model.addAttribute("editedAnimal", animal);
+        return "editingAnimal";
+    }
+
 }

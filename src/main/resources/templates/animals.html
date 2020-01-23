@@ -26,6 +26,17 @@
         <td><span th:text="${animal.age}">age</span></td>
         <td><span th:text="${animal.name}">name</span></td>
         <td><span th:text="${animal.id}">id</span></td>
+
+        <td>
+            <form th:action="@{/editAnimal}" th:object="${animal}">
+                <input type="hidden" field="${type}">
+                <input type="hidden" field="${age}">
+                <input type="hidden" field="${name}">
+                <input type="hidden" field="${id}">
+                <input type="submit" value="Edit"/>
+            </form>
+        </td>
+
         <td>
             <form th:action="@{/deleteAnimal/{id}(id=${animal.id})}" th:object="${animal}">
                 <input type="hidden" field="${animal}">
