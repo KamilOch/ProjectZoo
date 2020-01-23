@@ -2,15 +2,22 @@ package com.example.zoo.zoo.animal;
 
 public class Animal {
 
+    private int id;
     private String type;
     private int age;
     private String name;
+    private static int counter = 0;
 
     public Animal(String type, int age, String name) {
-
+        this.id = counter;
         this.type = type;
         this.age = age;
         this.name = name;
+        counter++;
+    }
+
+    public int getId() {
+        return id;
     }
 
     public String getType() {

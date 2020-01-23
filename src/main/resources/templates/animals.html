@@ -9,33 +9,33 @@
 
 <h1>Current animal list</h1>
 <br/>
-<form action="/animalsList" th:object="${animals}">
 
 
-    <table>
-        <thead>
-        <tr>
-            <th>Type</th>
-            <th>Age</th>
-            <th>Name</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:each="animal : ${animals}">
-            <td><span th:text="${animal.type}">type</span></td>
-            <td><span th:text="${animal.age}">age</span></td>
-            <td><span th:text="${animal.name}">name</span></td>
-            <td>
-                <form th:action="@{/deleteAnimal/{name}(name=${animal.name})}" th:object="${animal}">
-                    <input type="hidden" field="${animal}">
-                    <input type="submit" value="Delete"/>
-                </form>
-            </td>
-        </tr>
-        </tbody>
-    </table>
+<table>
+    <thead>
+    <tr>
+        <th>Type</th>
+        <th>Age</th>
+        <th>Name</th>
+        <th>ID</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="animal : ${animals}">
+        <td><span th:text="${animal.type}">type</span></td>
+        <td><span th:text="${animal.age}">age</span></td>
+        <td><span th:text="${animal.name}">name</span></td>
+        <td><span th:text="${animal.id}">id</span></td>
+        <td>
+            <form th:action="@{/deleteAnimal/{id}(id=${animal.id})}" th:object="${animal}">
+                <input type="hidden" field="${animal}">
+                <input type="submit" value="Delete"/>
+            </form>
+        </td>
+    </tr>
+    </tbody>
+</table>
 
-</form>
 
 <br/>
 <form action="/addAnimal">

@@ -16,6 +16,7 @@ public class AnimalService {
     }
 
     public List<Animal> createBaseAnimalsList() {
+        animals.add(new Animal("Czlowiek", 30, "Olek"));
         animals.add(new Animal("Słoń", 30, "Ela"));
         animals.add(new Animal("Tygrys", 7, "Edek"));
         animals.add(new Animal("Foka", 3, "Pestka"));
@@ -28,11 +29,11 @@ public class AnimalService {
     }
 
 
-    public void deleteAnimal(String name) {
+    public void deleteAnimalById(int id) {
         Animal deletedAnimal;
         for (Animal animal : animals
         ) {
-            if (name.equals(animal.getName())) {
+            if (id == animal.getId()) {
                 deletedAnimal = animal;
                 animals.remove(deletedAnimal);
                 break;

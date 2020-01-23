@@ -2,6 +2,7 @@ package com.example.zoo.zoo;
 
 import com.example.zoo.zoo.animal.Animal;
 import com.example.zoo.zoo.animal.AnimalService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,6 +17,7 @@ public class ProgramController {
     private AnimalService animalService;
     List<Animal> animalList;
 
+    @Autowired
     public ProgramController(AnimalService animalService) {
         this.animalService = animalService;
 
@@ -46,11 +48,11 @@ public class ProgramController {
         return "addingAnimal";
     }
 
-    @GetMapping("/deleteAnimal/{name}")
-    public String deleteAnimal(
-            @PathVariable String name
+    @GetMapping("/deleteAnimal/{id}")
+    public String deleteAnimalById(
+            @PathVariable String id
     ) {
-        animalService.deleteAnimal(name);
+        animalService.deleteAnimalById(Integer.parseInt(id));
         return "redirect:/animalsList";
     }
 }
