@@ -7,11 +7,11 @@ public class Animal {
     private String name;
 
     public Animal(String type, int age, String name) {
+
         this.type = type;
         this.age = age;
         this.name = name;
     }
-
 
     public String getType() {
         return type;

@@ -5,9 +5,9 @@ import com.example.zoo.zoo.animal.AnimalService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import java.awt.*;
 import java.util.List;
 
 @Controller
@@ -44,5 +44,13 @@ public class ProgramController {
             animalService.addAnimal(newAnimal);
         }
         return "addingAnimal";
+    }
+
+    @GetMapping("/deleteAnimal/{name}")
+    public String deleteAnimal(
+            @PathVariable String name
+    ) {
+        animalService.deleteAnimal(name);
+        return "redirect:/animalsList";
     }
 }

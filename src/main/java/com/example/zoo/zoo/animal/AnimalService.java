@@ -28,4 +28,15 @@ public class AnimalService {
     }
 
 
+    public void deleteAnimal(String name) {
+        Animal deletedAnimal;
+        for (Animal animal : animals
+        ) {
+            if (name.equals(animal.getName())) {
+                deletedAnimal = animal;
+                animals.remove(deletedAnimal);
+                break;
+            }
+        }
+    }
 }

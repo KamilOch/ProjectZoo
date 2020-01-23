@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns="http://www.w3.org/1999/html">
+
 <head>
     <meta charset="UTF-8"/>
     <title>Animal list</title>
@@ -24,6 +25,12 @@
             <td><span th:text="${animal.type}">type</span></td>
             <td><span th:text="${animal.age}">age</span></td>
             <td><span th:text="${animal.name}">name</span></td>
+            <td>
+                <form th:action="@{/deleteAnimal/{name}(name=${animal.name})}" th:object="${animal}">
+                    <input type="hidden" field="${animal}">
+                    <input type="submit" value="Delete"/>
+                </form>
+            </td>
         </tr>
         </tbody>
     </table>
