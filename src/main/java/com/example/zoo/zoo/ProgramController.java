@@ -2,10 +2,12 @@ package com.example.zoo.zoo;
 
 import com.example.zoo.zoo.animal.Animal;
 import com.example.zoo.zoo.animal.AnimalService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -15,7 +17,7 @@ public class ProgramController {
     private AnimalService animalService;
     List<Animal> animalList;
 
-    @Autowired
+
     public ProgramController(AnimalService animalService) {
         this.animalService = animalService;
 
@@ -53,14 +55,27 @@ public class ProgramController {
         animalService.deleteAnimalById(Integer.parseInt(id));
         return "redirect:/animalsList";
     }
+
     //TODO
-    @RequestMapping("/editAnimal")
+    @GetMapping("/editAnimal/{id}")
     public String editAnimal(
-            @ModelAttribute("animal") Animal animal,
+            @PathVariable Integer id,
             Model model
     ) {
-        model.addAttribute("editedAnimal", animal);
+        Animal editedAnimal = animalService.findById(id);
+        model.addAttribute("editedAnimal", editedAnimal);
         return "editingAnimal";
+    }
+
+    @GetMapping("/saveEditedAnimal")
+    public String saveEditedAnimal(
+            @RequestParam(value = "id", required = false) Integer id,
+            @RequestParam(value = "type", required = false) String type,
+            @RequestParam(value = "age", required = false) Integer age,
+            @RequestParam(value = "name", required = false) String name
+    ) {
+        animalService.editAnimal(id, type, age, name);
+        return "redirect:/animalsList";
     }
 
 }

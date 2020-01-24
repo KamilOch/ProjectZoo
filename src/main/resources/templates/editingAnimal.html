@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns="http://www.w3.org/1999/html">
+
 <head>
     <meta charset="UTF-8"/>
     <title>Title</title>
@@ -9,5 +10,21 @@
 <h1>Edit animal</h1>
 <br/>
 
+<form action="/saveEditedAnimal">
+    <input type="hidden" name="id" th:value="${editedAnimal.id}"/>
+    <p>New Type:<input id="type" name="type" th:value="${editedAnimal.type}"></p>
+    <p>New age:<input id="age" name="age" th:value="${editedAnimal.age}"></p>
+    <p>New name:<input id="name" name="name" th:value="${editedAnimal.name}"></p>
+    <input type="submit" value="Confirm">
+</form>
+
+<br/>
+<form action="/animalsList">
+    <input type="submit" value="Go to animal list">
+</form>
+<br/>
+<form action="/">
+    <input type="submit" value="Go to start page">
+</form>
 </body>
 </html>

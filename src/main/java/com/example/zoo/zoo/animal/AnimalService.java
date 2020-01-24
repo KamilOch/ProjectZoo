@@ -39,9 +39,24 @@ public class AnimalService {
             }
         }
     }
-    //todo
-    public void saveEditedAnimal(int id, Animal animal) {
-        animals.add(id, animal);
+
+    public Animal findById(int id) {
+        Animal animalById = null;
+        for (Animal animal : animals
+        ) {
+            if (id == animal.getId()) {
+                animalById = animal;
+                break;
+            }
+        }
+        return animalById;
+    }
+
+    public void editAnimal(int id, String type, int age, String name) {
+        Animal animal = findById(id);
+        animal.setType(type);
+        animal.setAge(age);
+        animal.setName(name);
     }
 
 }

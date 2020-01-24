@@ -31,4 +31,16 @@ public class Animal {
     public String getName() {
         return name;
     }
+
+    void setType(String type) {
+        this.type = type;
+    }
+
+    void setAge(int age) {
+        this.age = age;
+    }
+
+    void setName(String name) {
+        this.name = name;
+    }
 }
